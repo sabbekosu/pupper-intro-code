@@ -34,7 +34,38 @@ def activate():
             "ry": 0, 
             "dpady": 0, 
             "dpadx": 0})
+  
+def trot():
+    drive_pub.send({"L1": 0, 
+            "R1": 1, 
+            "x": 0, 
+            "circle": 0, 
+            "triangle": 0, 
+            "L2": 0, 
+            "R2": 0, 
+            "ly": 0, 
+            "lx": 0, 
+            "rx": 0, 
+            "message_rate": 20, 
+            "ry": 0, 
+            "dpady": 0, 
+            "dpadx": 0})  
     
+def forward():
+    drive_pub.send({"L1": 0, 
+            "R1": 1, 
+            "x": 0, 
+            "circle": 0, 
+            "triangle": 0, 
+            "L2": 0, 
+            "R2": 0, 
+            "ly": 0.6, 
+            "lx": 0, 
+            "rx": 0, 
+            "message_rate": 20, 
+            "ry": 0, 
+            "dpady": 0, 
+            "dpadx": 0})  
 # TODO: create functions that allow the robot to move around (forward,back,right,left,....)
 # Remember: The inputs are mainly digital except for the lx,ly and rx,ry controls.
 # The digital inputs do not reset after being call unless you design them to! (i.e., if you press L1 it will remaind press)
@@ -42,4 +73,9 @@ def activate():
 # TODO: make the robot move through the racing track
 if __name__ == "__main__":
     activate()
+    time.sleep(1)
+    trot(1)
+    time.sleep(1)
+    while True:
+        forward()
     
